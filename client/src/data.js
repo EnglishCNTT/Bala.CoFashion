@@ -1,20 +1,27 @@
 export const sliderItems = [
   {
     id: 1,
-    img: "https://colorlib.com/wp/wp-content/uploads/sites/2/Fashion-WordPress-Themes-Cover-Photo-1.jpg",
-    title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "f5fafd",
+    img: "https://res.cloudinary.com/dbr1konqv/image/upload/v1699523472/Project/img1_zkni97.png",
+    title: "FIND CLOTHES THAT MATCHES YOUR STYLE",
+    desc: "DESIGNED TO BRING OUT YOUR INDIVIDUALITY AND CATER TO YOUR SENSE OF STYLE",
+    bg: "f2f0f1",
   },
   {
     id: 2,
+    img: "https://colorlib.com/wp/wp-content/uploads/sites/2/Fashion-WordPress-Themes-Cover-Photo-1.jpg",
+    title: "SUMMER SALE",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    bg: "f5f3f4",
+  },
+  {
+    id: 3,
     img: "https://www.bworldonline.com/wp-content/uploads/2022/05/MensCapsule_2.jpg",
     title: "AUTUMN COLLECTION",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
     bg: "fcf1ed",
   },
   {
-    id: 3,
+    id: 4,
     img: "https://focus.cbbc.org/wp-content/uploads/2023/04/unnamed.jpg",
     title: "LOUNGEWEAR LOVE",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",

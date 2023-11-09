@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethod";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import Products from "../components/Products";
 
 const Container = styled.div``;
 
@@ -39,7 +40,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 200;
+  font-weight: 600;
 `;
 
 const Desc = styled.p`
@@ -80,13 +81,14 @@ const FilterColor = styled.div`
 
 const FilterSize = styled.select`
   margin-left: 10px;
-  padding: 5px;
+  padding: 6px 12px;
+  border-radius: 40px;
 `;
 
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,29 +98,35 @@ const AddContainer = styled.div`
 const AmountContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-radius: 40px;
   font-weight: 700;
+  background-color: #f8f4f4;
 `;
 
 const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid teal;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 5px;
+  margin: 0px 12px;
 `;
 
 const Button = styled.button`
-  padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
+  width: 60%;
+  padding: 16px;
+  border-radius: 40px;
+  background-color: black;
+  color: white;
   cursor: pointer;
   font-weight: 500;
 
   &:hover {
     background-color: #f8f4f4;
+    color: black;
   }
 `;
 
@@ -167,7 +175,7 @@ const Product = () => {
           <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
+              <FilterTitle>Color: </FilterTitle>
               {product.color?.map((c) => (
                 <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
@@ -183,14 +191,32 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveIcon onClick={() => handleQuantity("dec")} />
+              <RemoveIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("dec")}
+              />
               <Amount>{quantity}</Amount>
-              <AddIcon onClick={() => handleQuantity("inc")} />
+              <AddIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("inc")}
+              />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
+      <Container style={{margin: "60px 0"}}>
+        <Title
+          style={{
+            textAlign: "center",
+            fontWeight: "800",
+            fontSize: "40px",
+          }}
+        >
+          YOU MIGHT ALSO LIKE
+        </Title>
+        <Products />
+      </Container>
       <Newsletter />
       <Footer />
     </Container>
