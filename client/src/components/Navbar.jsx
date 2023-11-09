@@ -87,7 +87,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <SearchContainer>
-            <Input placeholder="Search"/>
+            <Input placeholder="Search" />
             <SearchIcon style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
           <Language>EN</Language>
@@ -100,8 +100,12 @@ const Navbar = () => {
               </Badge>
             </MenuItem>
           </Link>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
