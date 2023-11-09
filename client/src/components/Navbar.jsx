@@ -77,6 +77,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -100,7 +101,10 @@ const Navbar = () => {
               </Badge>
             </MenuItem>
           </Link>
-          <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+          <Link
+            to="/register"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <MenuItem>REGISTER</MenuItem>
           </Link>
           <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
