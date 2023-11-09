@@ -6,15 +6,31 @@ import PublishIcon from "@mui/icons-material/Publish";
 import { useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
+import { updateProduct } from "../../redux/apiCalls";
+import { useDispatch } from "react-redux";
 
 export default function Product() {
   const location = useLocation();
+  const dispatch = useDispatch();
   const productId = location.pathname.split("/")[2];
   const [pStats, setPStats] = useState([]);
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
 
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === productId)
   );
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const product = { ...inputs };
+    updateProduct(productId, product, dispatch);
+  };
 
   const MONTHS = useMemo(
     () => [
@@ -97,15 +113,30 @@ export default function Product() {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.title} />
+            <input
+              type="text"
+              name="title"
+              placeholder={product.title}
+              onChange={handleChange}
+            />
             <label>Product Description</label>
-            <input type="text" placeholder={product.desc} />
+            <input
+              type="text"
+              name="desc"
+              placeholder={product.desc}
+              onChange={handleChange}
+            />
             <label>Price</label>
-            <input type="text" placeholder={product.price} />
+            <input
+              type="text"
+              name="price"
+              placeholder={product.price}
+              onChange={handleChange}
+            />
             <label>In Stock</label>
-            <select name="inStock" id="idStock">
-              <option value="true">Yes</option>
-              <option value="false">No</option>
+            <select name="inStock" id="idStock" onChange={handleChange}>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
             </select>
           </div>
           <div className="productFormRight">
@@ -116,7 +147,9 @@ export default function Product() {
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <button onClick={handleClick} className="productButton">
+              Update
+            </button>
           </div>
         </form>
       </div>

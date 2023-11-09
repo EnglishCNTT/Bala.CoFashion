@@ -9,6 +9,9 @@ import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { Link, useNavigate } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { removeProduct, resetCart } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 console.log(KEY);
@@ -164,6 +167,7 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onToken = (token) => {
     setStripeToken(token);
   };
@@ -172,13 +176,27 @@ const Cart = () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
-          amount: 500,
+          amount: cart.total,
         });
         navigate("/success", { data: res.data });
-      } catch {}
+        dispatch(resetCart());
+      } catch {
+        console.log("Payment error");
+        navigate("/login");
+      }
     };
     stripeToken && cart.total >= 1 && makeRequest();
-  }, [stripeToken, cart.total, navigate]);
+  }, [stripeToken, cart.total, navigate, dispatch]);
+
+  useEffect(() => {
+    if (cart.products?.length === 0) {
+      dispatch(resetCart());
+    }
+  }, [cart.products?.length, dispatch]);
+
+  const handleDelete = (id) => {
+    dispatch(removeProduct(id));
+  };
   return (
     <Container>
       <Announcement />
@@ -217,6 +235,12 @@ const Cart = () => {
                 <PriceDetail>
                   <ProductAmountContainer>
                     <ProductAmount>{product.quantity}</ProductAmount>
+                    <ProductAmount>
+                      <DeleteIcon
+                        onClick={() => handleDelete(product._id)}
+                        style={{ cursor: "pointer" }}
+                      />
+                    </ProductAmount>
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
@@ -226,37 +250,43 @@ const Cart = () => {
             ))}
             <Hr />
           </Info>
-          <Summary>
-            <SummaryTitle>Order Summary</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <StripeCheckout
-              name="BaLa"
-              image="https://avatars.githubusercontent.com/u/78525193?s=200&v=4"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            >
-              <Button>Checkout Now</Button>
-            </StripeCheckout>
-          </Summary>
+          {cart.products.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            <>
+              <Summary>
+                <SummaryTitle>Order Summary</SummaryTitle>
+                <SummaryItem>
+                  <SummaryItemText>Subtotal</SummaryItemText>
+                  <SummaryItemPrice>$ {cart?.total}</SummaryItemPrice>
+                </SummaryItem>
+                <SummaryItem>
+                  <SummaryItemText>Estimated Shipping</SummaryItemText>
+                  <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+                </SummaryItem>
+                <SummaryItem>
+                  <SummaryItemText>Shipping Discount</SummaryItemText>
+                  <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+                </SummaryItem>
+                <SummaryItem type="total">
+                  <SummaryItemText>Total</SummaryItemText>
+                  <SummaryItemPrice>$ {cart?.total}</SummaryItemPrice>
+                </SummaryItem>
+                <StripeCheckout
+                  name="BaLa"
+                  image="https://w7.pngwing.com/pngs/720/939/png-transparent-paypal-computer-icons-logo-paypal-blue-angle-service-thumbnail.png"
+                  billingAddress
+                  shippingAddress
+                  description={`Your total is $${cart.total}`}
+                  amount={cart.total * 100}
+                  token={onToken}
+                  stripeKey={KEY}
+                >
+                  <Button>Checkout Now</Button>
+                </StripeCheckout>
+              </Summary>
+            </>
+          )}
         </Bottom>
       </Wrapper>
       <Footer />
