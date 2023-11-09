@@ -77,6 +77,7 @@ const FilterColor = styled.div`
   background-color: ${(props) => props.color};
   margin: 0px 5px;
   cursor: pointer;
+  border: ${(props) => (props.color === "white" ? "1px solid gray" : "")};
 `;
 
 const FilterSize = styled.select`

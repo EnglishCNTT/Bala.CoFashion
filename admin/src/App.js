@@ -13,14 +13,14 @@ import Login from "./pages/login/Login.js";
 
 function App() {
   const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root")).user
-  ).currentUser.isAdmin;
+    JSON.parse(localStorage.getItem("persist:root"))?.user
+  )?.currentUser?.isAdmin;
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
-      {admin && (
+      {admin !== undefined && (
         <>
         <Topbar />
         <div className="container">
