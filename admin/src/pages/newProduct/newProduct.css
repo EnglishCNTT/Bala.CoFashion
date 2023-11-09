@@ -38,4 +38,9 @@
     font-weight: 600;
     cursor: pointer;
   }
+
+  input[type="checkbox"] {
+    margin-left: 12px;
+    margin-right: 2px;
+  }
   

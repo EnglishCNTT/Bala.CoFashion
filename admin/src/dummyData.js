@@ -67,46 +67,46 @@ export const userData = [
   export const userRows = [
     {
       id: 1,
-      username: "Jon Snow",
+      username: "Test",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
+      email: "test@gmail.com",
       status: "active",
       transaction: "$120.00",
     },
     {
       id: 2,
-      username: "Jon Snow",
+      username: "D Nam",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
+      email: "dnam@gmail.com",
       status: "active",
       transaction: "$120.00",
     },
     {
       id: 3,
-      username: "Jon Snow",
+      username: "Ngoc Anh",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
+      email: "ngocanh@gmail.com",
       status: "active",
       transaction: "$120.00",
     },
     {
       id: 4,
-      username: "Jon Snow",
+      username: "Kien",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
+      email: "kien@gmail.com",
       status: "active",
       transaction: "$120.00",
     },
     {
       id: 5,
-      username: "Jon Snow",
+      username: "Thang",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
+      email: "thang@gmail.com",
       status: "active",
       transaction: "$120.00",
     },
@@ -119,42 +119,7 @@ export const userData = [
       status: "active",
       transaction: "$120.00",
     },
-    {
-      id: 7,
-      username: "Jon Snow",
-      avatar:
-        "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
-      status: "active",
-      transaction: "$120.00",
-    },
-    {
-      id: 8,
-      username: "Jon Snow",
-      avatar:
-        "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
-      status: "active",
-      transaction: "$120.00",
-    },
-    {
-      id: 9,
-      username: "Jon Snow",
-      avatar:
-        "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
-      status: "active",
-      transaction: "$120.00",
-    },
-    {
-      id: 10,
-      username: "Jon Snow",
-      avatar:
-        "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "jon@gmail.com",
-      status: "active",
-      transaction: "$120.00",
-    },
+
   ];
 
   export const productRows = [
