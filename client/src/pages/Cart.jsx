@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
 console.log(KEY);
@@ -186,7 +186,9 @@ const Cart = () => {
       <Wrapper>
         <Title>Your bag</Title>
         <Top>
-          <TopButton>Continue Shopping</TopButton>
+          <Link to="/">
+            <TopButton>Continue Shopping</TopButton>
+          </Link>
           <TopTexts>
             <TopText>Shopping Bag (2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
