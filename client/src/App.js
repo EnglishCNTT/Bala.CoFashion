@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const user = useSelector((state) => state.user.currentUser) ? true : false;
+  const user = useSelector((state) => state.user.currentUser);
   console.log(user);
   return (
     <Router>
