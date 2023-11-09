@@ -6,6 +6,8 @@ import Badge from "@mui/material/Badge";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   height: 60px;
@@ -77,7 +79,9 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-
+  const userName = useSelector((state) => state.user?.currentUser?.username);
+  const dispatch = useDispatch();
+  console.log(userName);
   return (
     <Container>
       <Wrapper>
@@ -101,15 +105,28 @@ const Navbar = () => {
               </Badge>
             </MenuItem>
           </Link>
-          <Link
-            to="/register"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
+          {userName === undefined ? (
+            <>
+              <Link
+                to="/register"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem>REGISTER</MenuItem>
+              </Link>
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <MenuItem>SIGN IN</MenuItem>
+              </Link>
+            </>
+          ) : (
+            <>
+              <MenuItem>Hello {userName}</MenuItem>
+              {/* logout */}
+              <MenuItem onClick={() => dispatch(logout())}>LOGOUT</MenuItem>
+            </>
+          )}
         </Right>
       </Wrapper>
     </Container>

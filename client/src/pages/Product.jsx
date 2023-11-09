@@ -206,7 +206,7 @@ const Product = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <Container style={{margin: "60px 0"}}>
+      <Container style={{ margin: "60px 0" }}>
         <Title
           style={{
             textAlign: "center",
