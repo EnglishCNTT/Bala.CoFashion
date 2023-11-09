@@ -36,9 +36,11 @@ const Title = styled.h1`
 
 const Button = styled.button`
   border: none;
-  padding: 10px;
+  border-radius: 24px;
+  padding: 12px 24px;
   background-color: white;
   color: gray;
+  opacity: 0.8;
   cursor: pointer;
   font-weight: 600;
 `;

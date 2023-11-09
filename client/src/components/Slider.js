@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
@@ -75,9 +75,11 @@ const Desc = styled.p`
 `;
 
 const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
+  border-radius: 50px;
+  padding: 12px 50px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
   cursor: pointer;
 `;
 
@@ -85,11 +87,20 @@ const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
     }
   };
+
+  const autoPlay = () => {
+    handleClick("right");
+  };
+
+  useEffect(() => {
+    const interval = setInterval(autoPlay, 5000); 
+    return () => clearInterval(interval);
+  }, [slideIndex]);
 
   return (
     <Container>
@@ -105,7 +116,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <Button>SHOP NOW</Button>
             </InfoContainer>
           </Slide>
         ))}

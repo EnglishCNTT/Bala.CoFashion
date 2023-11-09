@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 10px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 
 const Left = styled.div`
   flex: 1;
-  display: flex;
   align-items: center;
 `;
 
@@ -34,24 +33,30 @@ const Language = styled.span`
 
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
+  border-radius: 16px;
   display: flex;
   align-items: center;
-  margin-left: 25px;
-  padding: 5px;
+  justify-content: space-between;
+  margin-right: 28px;
+  padding: 8px;
+  width: 100%;
 `;
 
 const Input = styled.input`
   border: none;
+  width: 100%;
+  outline: none;
   ${mobile({ width: "50px" })}
 `;
 
 const Center = styled.div`
   flex: 1;
-  text-align: center;
+  display: flex;
+  align-items: center;
 `;
 
 const Logo = styled.h1`
-  font-weight: bold;
+  font-weight: 900;
   ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
@@ -65,7 +70,8 @@ const Right = styled.div`
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-left: 25px;
+  margin-left: 28px;
+  color: black;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
@@ -75,22 +81,18 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <SearchIcon style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <Logo>BALA.CO</Logo>
+          </Link>
         </Left>
         <Center>
-          <Logo>Bala.Co</Logo>
+          <SearchContainer>
+            <Input placeholder="Search"/>
+            <SearchIcon style={{ color: "gray", fontSize: 16 }} />
+          </SearchContainer>
+          <Language>EN</Language>
         </Center>
         <Right>
-          <Link to="/register">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
@@ -98,6 +100,8 @@ const Navbar = () => {
               </Badge>
             </MenuItem>
           </Link>
+          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>SIGN IN</MenuItem>
         </Right>
       </Wrapper>
     </Container>

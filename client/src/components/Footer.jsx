@@ -10,6 +10,7 @@ import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
+  padding: 40px;
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -20,10 +21,14 @@ const Left = styled.div`
   padding: 20px;
 `;
 
-const Logo = styled.h1``;
+const Logo = styled.h1`
+  font-weight: 900;
+  font-size: 40px;
+  `;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  width: 80%;
 `;
 
 const SocialContainer = styled.div`
@@ -66,7 +71,6 @@ const ListItem = styled.li`
 `;
 
 const Right = styled.div`
-  flex: 1;
   padding: 20px;
   ${mobile({ backgroundColor: "#fff8f8" })}
 `;
@@ -78,7 +82,7 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-  width: 50%;
+  width: 100%;
 `;
 
 const Footer = () => {
@@ -87,9 +91,7 @@ const Footer = () => {
       <Left>
         <Logo>Bala.Co</Logo>
         <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+        We have clothes that suits your style and which you’re proud to wear. From women to men.
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
@@ -124,14 +126,14 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <RoomIcon style={{ marginRight: "10px" }} /> 33 Bala Street , Hanoi
+          <RoomIcon style={{ marginRight: "10px" }} /> 33 Bala Street, Ha Dong, Hanoi
         </ContactItem>
         <ContactItem>
-          <PhoneIcon style={{ marginRight: "10px" }} /> +1 234 56 78
+          <PhoneIcon style={{ marginRight: "10px" }} /> +84 123 456 789
         </ContactItem>
         <ContactItem>
           <MailOutlinedIcon style={{ marginRight: "10px" }} />{" "}
-          contact@ngocenglish.dev
+          contact@phenikaa-uni.edu.vn
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
